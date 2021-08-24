@@ -5,9 +5,9 @@ const List = () => {
     const [data, setData] = useState({hits: []});
 
     useEffect(async () => {
-        const result = await axios(
-        'https://hn.algolia.com/api/v1/search?query=redux',
-        );
+        // const result = await axios(
+        // 'https://hn.algolia.com/api/v1/search?query=redux',
+        // );
         // const result = await axios.get("https://hn.algolia.com/api/v1/search?query=redux")
         // .then(function(response) {
         //     console.log(response.data);
@@ -17,9 +17,17 @@ const List = () => {
         // .catch(function(error) {
         //   console.log(error);
         // });
+        await axios.get("https://hn.algolia.com/api/v1/search?query=redux")
+        .then(function(response) {
+            console.log(response.data);
+            setData(response.data);
 
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
 
-        setData(result.data);
+        // setData(result.data);
     });
     return (
         <div>
