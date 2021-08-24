@@ -1,7 +1,7 @@
 import React, { useEffect, useState  } from "react";
 import axios from 'axios';
 
-const List = () => {
+const Test = () => {
     const [data, setData] = useState([]);
 
     useEffect(async () => {
@@ -48,4 +48,4 @@ const List = () => {
     )
 }
 
-export default List
+export default Test
