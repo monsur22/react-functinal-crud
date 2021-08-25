@@ -6,7 +6,7 @@ const Edit = (props) => {
     const [data, setData] = useState({});
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const apiUrl = "https://6125b4842d4e0d0017b6c425.mockapi.io/todo/" + props.match.params.id;
+    const apiUrl = "http://localhost:8000/api/model/edit/" + props.match.params.id;
 
     /// 1st way for userEffect useing
     // useEffect(() => {
@@ -40,8 +40,8 @@ const Edit = (props) => {
           formData.append('firstName', firstName);
           formData.append('lastName', lastName);
         //   formData.append('file', file);
-        const result = await fetch("https://6125b4842d4e0d0017b6c425.mockapi.io/todo/" + props.match.params.id,{
-            method: 'PUT',
+        const result = await fetch("http://localhost:8000/api/model/update/" + props.match.params.id,{
+            method: 'POST',
             body: formData
         });
         console.log(result)

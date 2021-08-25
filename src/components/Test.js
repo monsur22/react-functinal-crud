@@ -13,7 +13,7 @@ const List = () => {
     let history = useHistory();
 
     useEffect(async () => {
-        await axios.get("https://6125b4842d4e0d0017b6c425.mockapi.io/todo")
+        await axios.get("http://127.0.0.1:8000/api/model")
         .then(function(response) {
             console.log(response.data);
             setData(response.data);
@@ -25,14 +25,14 @@ const List = () => {
         }, []);
 
         const getData = async () => {
-            axios.get(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo`)
+            axios.get(`http://127.0.0.1:8000/api/model`)
                 .then((getData) => {
                     setData(getData.data);
                 })
         }
 
         const onDeleteHandler = async(id) => {
-            await axios.delete(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo/${id}`)
+            await axios.delete(`http://127.0.0.1:8000/api/model/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 getData();
