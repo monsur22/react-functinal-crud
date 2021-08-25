@@ -5,7 +5,7 @@ const Test = () => {
     const [data, setData] = useState([]);
 
     useEffect(async () => {
-        await axios.get("http://localhost:5000/posts")
+        await axios.get("https://60fbca4591156a0017b4c8a7.mockapi.io/fakeData")
         .then(function(response) {
             console.log(response.data);
             setData(response.data);
@@ -25,17 +25,17 @@ const Test = () => {
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Creator</th>
-                    <th scope="col">Title</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">List Name</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 {data.map((item) => (
-                    <tr key={item._id}>
+                    <tr key={item.id}>
                         <td scope="row">#</td>
-                        <td>{item.creator}</td>
-                        <td>{item.title}</td>
+                        <td>{item.firstName}</td>
+                        <td>{item.lastName}</td>
                         <td>Action</td>
                     </tr>
                 ))}
