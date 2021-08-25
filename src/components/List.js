@@ -1,8 +1,10 @@
 import React, { useEffect, useState  } from "react";
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 const List = () => {
     const [data, setData] = useState([]);
+    let history = useHistory();
 
     useEffect(async () => {
         await axios.get("https://6125b4842d4e0d0017b6c425.mockapi.io/todo")
@@ -16,20 +18,20 @@ const List = () => {
         });
         }, []);
 
-    const onDeleteHandler = async (id, e) => {
-        e.preventDefault();
+        const getData = async () => {
+            axios.get(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo`)
+                .then((getData) => {
+                    setData(getData.data);
+                })
+        }
 
-        if (window.confirm('Are you sure you want to delete')) {
-            axios.delete(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo/${id}`)
+        const onDeleteHandler = async(id) => {
+            await axios.delete(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo/${id}`)
             .then((response) => {
                 console.log(response);
-            });
-        }
-    };
-    const onDelete = (id) => {
-        axios.delete(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo/${id}`)
-        .then((response) => {
-            console.log(response);
+                // history.push('/')
+                getData();
+
         })
     }
     return (
@@ -53,7 +55,7 @@ const List = () => {
                         <td scope="row">{item.id}</td>
                         <td>{item.firstName}</td>
                         <td>{item.lastName}</td>
-                        <td><button size="sm" variant="danger" onClick={() => onDelete(item.id)}>Delete</button></td>
+                        <td><button size="sm" variant="danger" onClick={() => onDeleteHandler(item.id)}>Delete</button></td>
                     </tr>
                 ))}
 
