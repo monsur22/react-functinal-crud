@@ -10,8 +10,11 @@ import {
 
 const List = () => {
     const [data, setData] = useState([]);
-    let history = useHistory();
-
+    const history = useHistory();
+    //paginations for
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
+    
     useEffect(async () => {
         await axios.get("http://127.0.0.1:8000/api/model")
         .then(function(response) {
