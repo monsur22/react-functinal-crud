@@ -4,27 +4,40 @@ import { useHistory } from 'react-router';
 
 const Add = () => {
     let history = useHistory();
+    // const [data, setData] = useState([]);
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    // const [checkbox, setCheckbox] = useState(false);
-    // console.log(checkbox)
+    const [img, setImg] = useState('');
+    console.log(img)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const postData = {
-            firstName,
-            lastName,
-        };
-        axios.post(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo`, postData)
-            .then((response) => {
-                console.log(response);
-                history.push('/')
-            });
+    // const getData = async () => {
+    //     axios.get(`http://127.0.0.1:8000/api/model`)
+    //         .then((getData) => {
+    //             setData(getData.data);
+    //         })
+    // }
+    async function addProduct () {
+      console.warn(firstName,lastName,img)
+
+      const formData = new FormData()
+      formData.append('firstName', firstName);
+      formData.append('lastName', lastName);
+      formData.append('img', img);
+
+      const result = await fetch('http://localhost:8000/api/model/',{
+        method: 'POST',
+        body: formData
+    });
+    console.log(result)
+    // alert("Data hasbeen added")
+    history.push("/");
+
+
     }
     return (
         <div className="container">
             <h1>Add Page</h1>
-            <form onSubmit={handleSubmit}>
                 <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
                     <input type="text" name="firstName" class="form-control"  placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
@@ -33,12 +46,12 @@ const Add = () => {
                     <label for="exampleInputEmail1">Last Name</label>
                     <input type="text" name="lastName" class="form-control"  placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
                 </div>
-                {/* <div class="form-check">
-                    <input type="checkbox" class="form-check-input" onChange={(e) => setCheckbox(!checkbox)}/>
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> */}
-                <button  type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Image</label>
+                    <input type="file"  class="form-control-file" id="exampleFormControlFile1" onChange={(e) => setImg(e.target.files[0])} />
+                </div>
+                <button  type="submit" class="btn btn-primary"onClick={addProduct}>Submit</button>
+
         </div>
     )
 }

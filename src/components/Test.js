@@ -54,6 +54,7 @@ const List = () => {
                     <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -63,6 +64,10 @@ const List = () => {
                         <td scope="row">{item.id}</td>
                         <td>{item.firstName}</td>
                         <td>{item.lastName}</td>
+                        <td>
+                            <img style={{width:100}} src={"http://localhost:8000/"+item.img}>
+                                </img></td>
+
                         <td>
                             {/* <Link className="edit-link" to={  "/edit/"+item.id } >Edit</Link> */}
                             <Link className="edit-link" onClick={() => edit(item.id)}>Edit</Link>
