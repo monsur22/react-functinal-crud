@@ -7,14 +7,23 @@ import {
     Route,
     Link
   } from "react-router-dom";
+  import Pagination from './Pagination';
 
 const List = () => {
     const [data, setData] = useState([]);
-    const history = useHistory();
-    //paginations for
+    let history = useHistory();
+
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(10);
-    
+    const [postsPerPage] = useState(2);
+
+        // Get current posts
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
     useEffect(async () => {
         await axios.get("http://127.0.0.1:8000/api/model")
         .then(function(response) {
@@ -62,7 +71,7 @@ const List = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {data.map((item) => (
+                {currentPosts.map((item) => (
                     <tr key={item._id}>
                         <td scope="row">{item.id}</td>
                         <td>{item.firstName}</td>
@@ -83,6 +92,11 @@ const List = () => {
 
                 </tbody>
             </table>
+            <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={data.length}
+                paginate={paginate}
+            />
         </div>
     )
 }
