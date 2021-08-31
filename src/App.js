@@ -5,6 +5,7 @@ import List from './components/List';
 import Test from './components/Test';
 import Add from './components/Add';
 import Edit from './components/Edit';
+import Validation from './components/Validation';
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
       <Route path="/Test" component={Test} exact></Route>
       <Route path="/add" component={Add} exact></Route>
       <Route path="/edit/:id" component={Edit} exact></Route>
+      <Route path="/Validation" component={Validation} exact></Route>
 
     </Router>
   );
