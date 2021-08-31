@@ -11,8 +11,8 @@ const Validation = () => {
     const [img, setImg] = useState('');
     console.log(img)
 
-    const [firstNameErr, setFirstNameErr] = useState('{}');
-    const [lastNameErr, setLastNameErr] = useState('{}');
+    const [firstNameErr, setFirstNameErr] = useState({});
+    const [lastNameErr, setLastNameErr] = useState({});
 
     // const getData = async () => {
     //     axios.get(`http://127.0.0.1:8000/api/model`)
@@ -22,10 +22,10 @@ const Validation = () => {
     // }
 
     /// **********************validatin start from here************************
-    const onSubmit =(e)=>{
-        e.preventDefault();
-        const isValid = formValidation();
-    }
+    // const onSubmit =(e)=>{
+    //     e.preventDefault();
+    //     const isValid = formValidation();
+    // }
 
     const formValidation =()=>{
         const firstNameErr = {};
