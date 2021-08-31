@@ -15,7 +15,7 @@ const List = () => {
     let history = useHistory();
     /// pagination start
     const [currentPage, setcurrentPage] = useState(1);
-    const [itemsPerPage, setitemsPerPage] = useState(1);
+    const [itemsPerPage, setitemsPerPage] = useState(2);// how much item you want in one page
 
     const [pageNumberLimit, setpageNumberLimit] = useState(5);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
@@ -178,9 +178,9 @@ const List = () => {
                 </li>
             </ul>
             {/* for load more button */}
-            <button onClick={handleLoadMore} className="loadmore">
+            {/* <button onClick={handleLoadMore} className="loadmore">
                 Load More
-            </button>
+            </button> */}
             {/* pagination end  here */}
 
         </div>
