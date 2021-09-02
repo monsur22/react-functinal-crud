@@ -15,7 +15,7 @@ const Validation = () => {
     const [lastNameErr, setLastNameErr] = useState({});
 
     // const getData = async () => {
-    //     axios.get(`http://127.0.0.1:8000/api/model`)
+    //     axios.get(`http://localhost:8000/api/model`)
     //         .then((getData) => {
     //             setData(getData.data);
     //         })
@@ -75,7 +75,7 @@ const Validation = () => {
     }
     return (
         <div className="container">
-            <h1>Add Page</h1>
+            <h4>Validation Add Page</h4>
                 <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
                     <input type="text" name="firstName" class="form-control"  placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>

@@ -66,7 +66,7 @@ const Edit = (props) => {
             <div class="form-group">
                     <label for="exampleFormControlFile1">Image</label>
                     <input type="file"  class="form-control-file" id="exampleFormControlFile1"  onChange={(e) => setImg(e.target.files[0])} />
-            <img style={{width:100}} src={"http://localhost:8000/"+data.img}></img>
+            <img style={{width:100}} src={"http://localhost:8000/image/"+data.img}></img>
 
             </div>
             <button  type="submit" class="btn btn-primary" onClick={()=>updateProduct(data.id)}>Submit</button>

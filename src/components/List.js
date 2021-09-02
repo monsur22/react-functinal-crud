@@ -25,7 +25,7 @@ const List = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     useEffect(async () => {
-        await axios.get("http://127.0.0.1:8000/api/model")
+        await axios.get("http://localhost:8000/api/model")
         .then(function(response) {
             console.log(response.data);
             setData(response.data);
@@ -37,14 +37,14 @@ const List = () => {
         }, []);
 
         const getData = async () => {
-            axios.get(`http://127.0.0.1:8000/api/model`)
+            axios.get(`http://localhost:8000/api/model`)
                 .then((getData) => {
                     setData(getData.data);
                 })
         }
 
         const onDeleteHandler = async(id) => {
-            await axios.delete(`http://127.0.0.1:8000/api/model/delete/${id}`)
+            await axios.delete(`http://localhost:8000/api/model/delete/${id}`)
             .then((response) => {
                 console.log(response);
                 getData();
@@ -59,7 +59,9 @@ const List = () => {
 
     return (
         <div>
-            <h1>LIst page</h1>
+            <h1 className="text-center">Crud Operation funtioanl compnent,Pagination and Validation. Use Laravel in backend.</h1>
+
+            <h4 className="text-center">LIst page</h4>
              <table class="table">
                 <thead>
                     <tr>
@@ -73,11 +75,11 @@ const List = () => {
                 <tbody>
                 {currentPosts.map((item) => (
                     <tr key={item._id}>
-                        <td scope="row">{item.id}</td>
+                        <td>{item.id}</td>
                         <td>{item.firstName}</td>
                         <td>{item.lastName}</td>
                         <td>
-                            <img style={{width:100}} src={"http://localhost:8000/"+item.img}>
+                            <img style={{width:100}} src={"http://localhost:8000/image/"+item.img}>
                                 </img></td>
 
                         <td>
