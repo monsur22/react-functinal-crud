@@ -4,12 +4,22 @@ import {
     Switch,
     Route,
     Link,
-    useParams
+    useParams,useHistory
   } from "react-router-dom";
 const Header = () => {
+    let history = useHistory();
+
+    const user = JSON.stringify( localStorage.getItem("user-info"));
+    console.warn(user);
+
+    function logout(){
+        localStorage.clear();
+        history.push("/")
+
+    }
     return (
         <div>
-            
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
             {/* <a class="navbar-brand" href="#"></a> */}
             <Link class="navbar-brand" to="/">Navbar</Link>
@@ -24,28 +34,58 @@ const Header = () => {
                 <Link class="nav-link" to="/">Home</Link>
 
                 </li>
-                <li class="nav-item active">
-                    {/* <a class="nav-link" href="#">Link</a> */}
+               {/* <li class="nav-item active">
                     <Link class="nav-link" to="/add">Add</Link>
 
-                </li>
+                </li> */}
                 <li class="nav-item">
                     {/* <a class="nav-link" href="#">Link</a> */}
                     <Link class="nav-link" to="/Test">Test</Link>
 
                 </li>
-                {/* <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> */}
 
+                    {
+                        localStorage.getItem('user-info') ?
+                        <>
+                        <li class="nav-item">
+                        <Link class="nav-link" to="/add">Add</Link>
+                        </li>
+
+                        </>
+
+                        :
+                        <>
+                        <li class="nav-item">
+
+                        <Link class="nav-link" to="/register">Registration</Link>
+                        </li>
+                        <li class="nav-item">
+
+                        <Link class="nav-link" to="/login">Login</Link>
+                        </li>
+                        </>
+                    }
+
+
+
+                 {/* <li class="nav-item">
+                     <Link class="nav-link" to="/register">Registration</Link>
+
+                 </li>
+                 <li class="nav-item">
+                     <Link class="nav-link" to="/login">Login</Link>
+
+                 </li> */}
+                    { localStorage.getItem('user-info') ?
+                        <>
+
+                        <li class="nav-item" >
+                            <Link class="nav-link" onClick={logout} >Logout</Link>
+
+                        </li>
+                        </>
+                    : null
+                }
                 </ul>
 
             </div>
