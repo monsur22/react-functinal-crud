@@ -40,33 +40,24 @@ const Add = () => {
         // alert("Data hasbeen added")
         history.push("/");
 
-
     }
-    return ( <
-        div className = "container" >
-        <
-        h4 > Add Page < /h4> <
-        div class = "form-group" >
-        <
-        label
-        for = "exampleInputEmail1" > First Name < /label> <
-        input type = "text"
+    return ( <div className = "container" >
+        <h4 > Add Page </h4>
+        <div class = "form-group" >
+        <label
+        for = "exampleInputEmail1" > First Name </label>
+        <input type = "text"
         name = "firstName"
         class = "form-control"
         placeholder = "First Name"
-        value = {
-            firstName
-        }
+        value = {firstName}
         onChange = {
             (e) => setFirstName(e.target.value)
         }
-        /> <
-        /div> <
-        div class = "form-group" >
-        <
-        label
-        for = "exampleInputEmail1" > Last Name < /label> <
-        input type = "text"
+        /> </div>
+        <div class = "form-group" >
+        <label for = "exampleInputEmail1" > Last Name </label>
+        <input type = "text"
         name = "lastName"
         class = "form-control"
         placeholder = "Last Name"
@@ -76,28 +67,19 @@ const Add = () => {
         onChange = {
             (e) => setLastName(e.target.value)
         }
-        /> <
-        /div> <
-        div class = "form-group" >
-        <
-        label
-        for = "exampleFormControlFile1" > Image < /label> <
-        input type = "file"
+        /> </div>
+        <div class = "form-group" >
+        <label for = "exampleFormControlFile1" > Image </label>
+        <input type = "file"
         class = "form-control-file"
         id = "exampleFormControlFile1"
         onChange = {
             (e) => setImg(e.target.files[0])
         }
-        /> <
-        /div> <
-        button type = "submit"
-        class = "btn btn-primary"
-        onClick = {
-            addProduct
-        } > Submit < /button>
+        /> </div>
+        <button type = "submit"class = "btn btn-primary"onClick = { addProduct} > Submit </button>
 
-        <
-        /div>
+        </div>
     )
 }
 

@@ -30,11 +30,15 @@ const Edit = (props) => {
               setFirstName(result.firstName)
               setLastName(result.lastName)
               setImg(result.img)
+              const json = JSON.stringify(result);
+              const lol = localStorage.setItem("result", json);
+              // console.log(localStorage.setItem("result", json));
+              console.log(lol);
 
           },[]);
+          // const hello = Object.keys(localStorage.setItem("result", lol))
 
         // axios.post(`https://6125b4842d4e0d0017b6c425.mockapi.io/todo`, postData)
-
       async function updateProduct(id){
           const formData = new FormData()
           formData.append('firstName', firstName);
@@ -45,6 +49,7 @@ const Edit = (props) => {
             body: formData
         });
         console.log(formData)
+
         // alert("Data hasbeen updated")
         // getData()
         history.push("/");
